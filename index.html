@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Rajkumar - AI & Computer Vision Specialist</title>
+    
+    <style>
+        /* --- 1. GLOBAL VARIABLES & BASE STYLES --- */
+        :root {
+            --primary-color: #008C99; /* Primary Accent: Deep Cyan/Teal */
+            --secondary-color: #2c3e50; /* Dark Text/Base: Deep Charcoal/Navy */
+            --text-color: #5a5a5a; /* Light Text */
+            --bg-light: #f4f6f9; /* Light Gray Background */
+            --bg-white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-white);
+            color: var(--secondary-color);
+            line-height: 1.7;
+        }
+
+        /* Re-usable Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* --- 2. SECTION LAYOUTS --- */
+        section {
+            padding: 100px 0; 
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- 3. NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 5px 0;
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* --- 4. HOME SECTION --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+
+        #home h1 {
+            font-size: 3.8rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        #home .tagline {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: var(--bg-white);
+            border-color: var(--primary-color);
+        }
+        
+        /* --- 5. ABOUT & SKILLS --- */
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr; /* Adjusted ratio for text dominance */
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+        
+        .about-highlight {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .skills-container h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .skills-list {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skills-list li {
+            background-color: #e6f7ff;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #b3e0ff;
+        }
+
+        /* --- 6. ACHIEVEMENTS & PROJECTS (Reused Structures) --- */
+        .experience-item {
+            border-left: 5px solid var(--primary-color);
+            background: var(--bg-white);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s;
+        }
+        
+        .exp-header h3 {
+            color: var(--primary-color);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            border-top: 3px solid var(--primary-color);
+            background: var(--bg-white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-card h3 {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .project-card .tech {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.95rem;
+        }
+
+        /* --- 7. EDUCATION & CERTS --- */
+        #education {
+            background-color: var(--bg-light);
+        }
+        
+        .education-item strong {
+            color: var(--secondary-color);
+        }
+        
+        .cert-list li::before, .achieve-list li::before {
+            content: '✓'; /* Changed from heavy checkmark to lighter checkmark */
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
+        }
+
+        /* --- 8. RESPONSIVENESS --- */
+        @media (max-width: 900px) {
+            #about .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; 
+            }
+            .nav-logo {
+                text-align: center;
+                width: 100%;
+            }
+            #home h1 {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="nav-logo">Portfolio</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About & Skills</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education & Certs</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        <section id="home">
+            <div class="home-content">
+                <h1>Vishal Rajkumar</h1>
+                <p class="tagline">AI & Computer Vision Specialist | Automation & System Design</p>
+                <div class="social-links">
+                    <a href="mailto:vishalvr.2005@gmail.com" target="_blank">Email</a> 
+                    <a href="https://linkedin.com/in/vishalrajkumar-b0ba0a292" target="_blank">LinkedIn</a> 
+                    <a href="tel:+917358279777" target="_blank">Call/Phone</a> 
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2 class="section-title">About Me & Expertise</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am an innovative and detail-oriented <span class="about-highlight">AI and Computer Vision Developer</span> currently pursuing my B.E. in Computer Science Engineering (AIML). I'm deeply passionate about building intelligent systems that combine computer vision, automation, and data-driven decision-making.
+                    </p>
+                    <p>
+                        My focus is on bridging theory and real-world application. I've built practical solutions like a Smart Inventory Management System and an advanced <span class="about-highlight">Valve Isolation and Flow Visualization System</span>, utilizing YOLO models, OpenCV, Python automation, and optimized data structures.
+                    </p>
+                    <p>
+                        I possess a strong foundation in Python, C, C++, and Java, alongside frameworks like TensorFlow and key libraries such as Pandas, NumPy, and Scikit-learn. I value continuous learning, technical precision, and collaboration, with long-term interests in Cloud Computing and Cybersecurity.
+                    </p>
+                </div>
+                <div class="skills-container">
+                    <h3>Core Technical Skills</h3>
+                    <ul class="skills-list">
+                        <li>AI/ML (TensorFlow, Scikit-learn)</li>
+                        <li>Computer Vision (YOLOv8, OpenCV)</li>
+                        <li>Python</li>
+                        <li>C / C++ / Java</li>
+                        <li>Pandas, NumPy</li>
+                        <li>MySQL / CSV Handling</li>
+                        <li>HTML, CSS, JavaScript</li>
+                    </ul>
+                    <h3>Areas of Interest</h3> 
+                    <ul class="skills-list">
+                        <li>System Design</li>
+                        <li>Automation</li>
+                        <li>Cloud Computing</li>
+                        <li>Cybersecurity</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="container">
+            <h2 class="section-title">Key Achievements & Professional Growth</h2>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Core AI Project Development</h3>
+                    <span class="date">AIML Specialization</span>
+                    <h4>YOLOv8 Framework Integration</h4>
+                </div>
+                <ul>
+                    <li>Developed and integrated a modular valve detection and isolation framework using YOLOv8.</li>
+                    <li>Enhanced the simulation logic accuracy of the system by <span class="about-highlight">over 40%</span> using graph-based pathfinding.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Hackathon Participation and Recognition</h3>
+                    <span class="date">Innovation in Daily-Life AI</span>
+                    <h4>Smart Inventory Management System</h4>
+                </div>
+                <ul>
+                    <li>Presented the computer vision–based Smart Inventory Management project.</li>
+                    <li>Project was recognized for its innovation and technical feasibility as a smart automation concept.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Continuous Learning & Certifications</h3>
+                    <span class="date">NPTEL Courses Completed</span>
+                    <h4>IoT, Security, and Leadership</h4>
+                </div>
+                <ul>
+                    <li>Completed 3 NPTEL certifications, demonstrating commitment to balanced growth in technical areas (IoT, Privacy & Security) and soft skills (Leadership).</li>
+                </ul>
+            </div>
+            
+            </section>
+
+        <section id="projects" class="container">
+            <h2 class="section-title">Projects Portfolio</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Valve Isolation and Flow Visualization System </h3>
+                        <p>A comprehensive AI-driven visualization system for waterflow pipelines, integrating YOLOv8 detection, graph-based connection mapping, and interactive valve isolation logic. </p>
+                        <p class="tech">Tech: Python, OpenCV, YOLOv8, Graph Theory</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Smart Inventory Management for Households</h3>
+                        <p>A computer vision–based system to automatically track, manage, and update household inventory levels using object detection and real-time image analysis. </p>
+                        <p class="tech">Tech: Python, OpenCV, TensorFlow, MySQL</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Dataset Cleaning and Image Rendering Automation</h3>
+                        <p>Developed an automated image-cleaning and enhancement tool for preprocessing AI vision datasets (background removal, cropping, augmentation). </p>
+                        <p class="tech">Tech: OpenCV, Python (Improved YOLO accuracy)</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Interactive Graph Builder & Flow Animation Framework</h3>
+                        <p>Custom tools for the valve system: enables manual node creation/JSON export and an engine modeling water flow using optimized graph traversal algorithms. </p>
+                        <p class="tech">Tech: Python, Graph traversal algorithms</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="education-grid">
+                
+                <div class="education-col">
+                    <h3>Academic Background</h3> 
+                    <div class="education-item">
+                        <strong>B.E. in Computer Science Engineering (AI & ML)</strong> <br>
+                        <em>Easwari Engineering College, Chennai (2023 - 2027)</em>
+                        <br>
+                        <em>Current CGPA: 8.2</em>
+                    </div>
+                </div>
+                
+                <div class="education-col">
+                    <h3>Professional Certifications</h3> 
+                    <ul class="cert-list">
+                        <li>NPTEL: Internet of Things</li>
+                        <li>NPTEL: Privacy and Security in Online Social Media</li>
+                        <li>NPTEL: Leadership and Team Effectiveness (2025)</li>
+                        <li>Java Concepts – Infosys Springboard</li>
+                        <li>Introduction to Python – TCS Skillsoft</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>I am actively seeking opportunities to apply my expertise in Computer Vision and AI/ML to solve real-world technical challenges. Feel free to connect to discuss potential roles or projects!</p>
+            <div class="contact-links">
+                <a href="mailto:vishalvr.2005@gmail.com" target="_blank">vishalvr.2005@gmail.com</a> 
+                <a href="https://linkedin.com/in/vishalrajkumar-b0ba0a292" target="_blank">LinkedIn Profile</a> 
+                <a href="tel:+917358279777">+91 7358279777</a> 
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Vishal Rajkumar. Designed for AI & Computer Vision Excellence.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a.nav-link');
+
+            const activateLink = (id) => {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            const onScroll = () => {
+                let currentSection = '';
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120; 
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollY >= sectionTop && scrollY < (sectionTop + sectionHeight)) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                if (scrollY < 300) {
+                     currentSection = 'home';
+                }
+                
+                // Check if user is near the bottom of the page
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                     currentSection = 'contact';
+                }
+
+                if (currentSection) {
+                    activateLink(currentSection);
+                }
+            };
+
+            window.addEventListener('scroll', onScroll);
+            onScroll(); // Run on page load
+        });
+    </script>
+
+</body>
+</html>
